@@ -1,0 +1,501 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: transparent; }
+
+  .site { font-family: var(--font-sans); color: var(--color-text-primary); }
+
+  .hero {
+    background: linear-gradient(135deg, #3B6D11 0%, #639922 50%, #BA7517 100%);
+    padding: 3rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 48px;
+    background: var(--color-background-primary);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1.5rem;
+  }
+  .hero-badges {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+
+  .section { padding: 2.5rem 1.5rem; max-width: 860px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: #3B6D11;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--color-border-tertiary);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .concept-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1rem 1.25rem;
+  }
+  .concept-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .concept-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+  .concept-card p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+  }
+  .char-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.25rem;
+    text-align: center;
+    transition: border-color 0.2s;
+    cursor: default;
+  }
+  .char-card:hover { border-color: var(--color-border-secondary); }
+
+  .char-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 12px;
+  }
+  .fox-bg { background: #FAEEDA; }
+  .panda-bg { background: #E6F1FB; }
+  .wolf-bg { background: #EAF3DE; }
+  .bear-bg { background: #FAECE7; }
+
+  .char-name {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+  }
+  .char-animal {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 10px;
+  }
+  .char-trait {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .fox-trait { background: #FAEEDA; color: #854F0B; }
+  .panda-trait { background: #E6F1FB; color: #185FA5; }
+  .wolf-trait { background: #EAF3DE; color: #3B6D11; }
+  .bear-trait { background: #FAECE7; color: #993C1D; }
+
+  .char-desc {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .map-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1.5rem;
+  }
+  .map-locations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 1.25rem;
+  }
+  .location-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+  }
+  .loc-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .loc-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+  .loc-desc {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  .progress-bar-wrap {
+    margin-top: 1rem;
+    background: var(--color-background-secondary);
+    border-radius: 20px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #3B6D11, #BA7517);
+    width: 35%;
+  }
+  .progress-label {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 6px;
+  }
+
+  .devlog {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .log-item {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 1.5rem;
+    position: relative;
+  }
+  .log-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 32px;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-border-tertiary);
+  }
+  .log-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    border: 2px solid var(--color-border-tertiary);
+    background: var(--color-background-primary);
+  }
+  .log-dot.done { background: #EAF3DE; border-color: #639922; }
+  .log-content { padding-top: 4px; }
+  .log-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
+  .log-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.5; }
+
+  .footer {
+    background: var(--color-background-secondary);
+    border-top: 0.5px solid var(--color-border-tertiary);
+    text-align: center;
+    padding: 2rem;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+  }
+  .footer strong { color: var(--color-text-primary); font-weight: 500; }
+</style>
+
+<div class="site">
+
+  <div class="hero">
+    <div class="hero-tag">Game Design Dev Log</div>
+    <h1>Wild Paws</h1>
+    <p class="hero-sub">A 2D adventure game about kids born with animal traits</p>
+    <div class="hero-badges">
+      <span class="badge">2D Side-scroll</span>
+      <span class="badge">Exploration</span>
+      <span class="badge">Anime style</span>
+      <span class="badge">Ages 8–12</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Game concept</div>
+    <h2 class="section-title">The story so far</h2>
+    <p class="section-desc">Four kids born with mysterious animal traits find themselves on a tropical island that holds the secret of their origins. They must explore dangerous zones, battle monsters, and uncover the truth about why they were born different.</p>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="concept-icon">🏝️</div>
+        <h3>Island mystery</h3>
+        <p>A tropical island with 6 hidden zones, each holding a clue about the kids' origins.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">👾</div>
+        <h3>Zone bosses</h3>
+        <p>Each zone has a final monster. Defeat it to unlock a piece of the story.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">🌿</div>
+        <h3>Home base</h3>
+        <p>A giant treehouse where the team gathers, rests and plans their next move.</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">🎮</div>
+        <h3>2D scroll</h3>
+        <p>Side-scrolling platformer with exploration and combat inspired by classic adventures.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 0.5rem;">
+      <div style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 6px;">Overall progress</div>
+      <div class="progress-bar-wrap"><div class="progress-bar"></div></div>
+      <div class="progress-label">Design phase — 35% complete</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Characters</div>
+    <h2 class="section-title">Meet the crew</h2>
+    <p class="section-desc">Four animal-kids, one island. Each character has a unique personality, fighting style and zone to explore.</p>
+
+    <div class="char-grid">
+      <div class="char-card">
+        <div class="char-avatar fox-bg">🦊</div>
+        <div class="char-name">Coco</div>
+        <div class="char-animal">Fox-girl · Protagonist</div>
+        <span class="char-trait fox-trait">Curious explorer</span>
+        <p class="char-desc">Sharp, clever and always asking why. Coco leads the way into the unknown.</p>
+      </div>
+      <div class="char-card">
+        <div class="char-avatar panda-bg">🐼</div>
+        <div class="char-name">Charlotte</div>
+        <div class="char-animal">Panda-girl</div>
+        <span class="char-trait panda-trait">Loyal fighter</span>
+        <p class="char-desc">Quiet and steady, but devastating in combat with her bo staff.</p>
+      </div>
+      <div class="char-card">
+        <div class="char-avatar wolf-bg">🐺</div>
+        <div class="char-name">Milo</div>
+        <div class="char-animal">Wolf-boy</div>
+        <span class="char-trait wolf-trait">Fierce & loyal</span>
+        <p class="char-desc">Dark and fast, with sharp instincts and an unshakeable bond to his pack.</p>
+      </div>
+      <div class="char-card">
+        <div class="char-avatar bear-bg">🐻</div>
+        <div class="char-name">Otto</div>
+        <div class="char-animal">Bear-boy</div>
+        <span class="char-trait bear-trait">Gentle giant</span>
+        <p class="char-desc">Big heart, big strength. Otto is everyone's favourite — and nobody's pushover.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Island map</div>
+    <h2 class="section-title">Locations</h2>
+    <p class="section-desc">The island is divided into 8 key locations. Kids start at Sandy Cove and build their base at The Great Treehouse before venturing into the 6 mystery zones.</p>
+
+    <div class="map-card">
+      <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <span style="font-size: 12px; font-weight: 500; color: #3B6D11; background: #EAF3DE; padding: 3px 10px; border-radius: 12px;">Start</span>
+        <span style="font-size: 12px; color: var(--color-text-secondary)">Sandy Cove → The Great Treehouse → 6 mystery zones</span>
+      </div>
+      <div class="map-locations">
+        <div class="location-item">
+          <div class="loc-icon">🏖️</div>
+          <div><div class="loc-name">Sandy Cove</div><div class="loc-desc">Starting beach. Safe, calm, where the journey begins.</div></div>
+        </div>
+        <div class="location-item">
+          <div class="loc-icon">🌳</div>
+          <div><div class="loc-name">The Great Treehouse</div><div class="loc-desc">Team home base. Built by the kids themselves.</div></div>
+        </div>
+        <div class="location-item">
+          <div class="loc-icon">🐺</div>
+          <div><div class="loc-name">The Howling Caves</div><div class="loc-desc">Dark caverns. Glowing eyes. Wolf territory.</div></div>
+        </div>
+        <div class="location-item">
+          <div class="loc-icon">🎋</div>
+          <div><div class="loc-name">The Bamboo Maze</div><div class="loc-desc">Dense bamboo paths. Pandas lurking in the shadows.</div></div>
+        </div>
+        <div class="location-item">
+          <div class="loc-icon">🌊</div>
+          <div><div class="loc-name">The Shadow Lagoon</div><div class="loc-desc">Black water, glowing plants. Panther territory.</div></div>
+        </div>
+        <div class="location-item">
+          <div class="loc-icon">🏛️</div>
+          <div><div class="loc-name">The Ruined Temple</div><div class="loc-desc">Ancient stone ruins. Mysterious carvings inside.</div></div>
+        </div>
+        <div class="location-item">
+          <div class="loc-icon">⛰️</div>
+          <div><div class="loc-name">The Stormy Peaks</div><div class="loc-desc">Rocky mountains with lightning and storm clouds.</div></div>
+        </div>
+        <div class="location-item">
+          <div class="loc-icon">✨</div>
+          <div><div class="loc-name">The Whispering Grove</div><div class="loc-desc">Glowing mushrooms, fireflies and magic in the air.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Dev log</div>
+    <h2 class="section-title">Design progress</h2>
+    <p class="section-desc">Tracking everything we've built so far, step by step.</p>
+
+    <div class="devlog">
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Game name & concept</div>
+          <div class="log-sub">Explored names like Wildborn, Primal Isle and Wild Paws. Settled on Wild Paws for its kid-friendly energy.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Island map designed</div>
+          <div class="log-sub">Created Firefly prompt for a Peter Pan–style parchment map with 8 locations and monster hints.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Coco — fox-girl designed</div>
+          <div class="log-sub">Anime style, preteen, curious explorer. Character sheet and sprite prompts created for Firefly.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Charlotte — panda-girl designed</div>
+          <div class="log-sub">Quiet, loyal, bo staff fighter. Character sheet and walking cycle sprite prompt created.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Milo — wolf-boy designed</div>
+          <div class="log-sub">Manga style, dark charcoal and deep blue, sporty casual outfit. Character sheet prompt created.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Otto — bear-boy designed</div>
+          <div class="log-sub">Gentle giant, honey brown, rugged flannel. Character sheet prompt created.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot">○</div>
+        <div class="log-content">
+          <div class="log-title">Walking cycle sprites</div>
+          <div class="log-sub">Next up — generate sprite walking cycles for all four characters.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot">○</div>
+        <div class="log-content">
+          <div class="log-title">Monster designs</div>
+          <div class="log-sub">Pending — design the zone bosses and enemies for each location.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot">○</div>
+        <div class="log-content">
+          <div class="log-title">Story & level design</div>
+          <div class="log-sub">Pending — flesh out the story intro, zone narratives and clue system.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <strong>Wild Paws</strong> · Game Design Dev Log · Built with Claude
+  </div>
+
+</div>
