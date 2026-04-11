@@ -179,6 +179,23 @@
     line-height: 1.5;
   }
 
+  .char-img {
+    width: calc(100% + 2.5rem);
+    margin: -1.25rem -1.25rem 12px;
+    display: block;
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    aspect-ratio: 1;
+    object-fit: contain;
+    background: #f7f5f2;
+  }
+
+  .map-img {
+    width: 100%;
+    display: block;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 1.25rem;
+  }
+
   .map-card {
     background: var(--color-background-primary);
     border: 0.5px solid var(--color-border-tertiary);
@@ -227,7 +244,7 @@
     height: 100%;
     border-radius: 20px;
     background: linear-gradient(90deg, #3B6D11, #BA7517);
-    width: 35%;
+    width: 55%;
   }
   .progress-label {
     font-size: 12px;
@@ -287,7 +304,7 @@
 
   <div class="hero">
     <div class="hero-tag">Game Design Dev Log</div>
-    <h1>Wild Paws</h1>
+    <h1>Wildborn</h1>
     <p class="hero-sub">A 2D adventure game about kids born with animal traits</p>
     <div class="hero-badges">
       <span class="badge">2D Side-scroll</span>
@@ -328,7 +345,7 @@
     <div style="margin-top: 0.5rem;">
       <div style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 6px;">Overall progress</div>
       <div class="progress-bar-wrap"><div class="progress-bar"></div></div>
-      <div class="progress-label">Design phase — 35% complete</div>
+      <div class="progress-label">Design phase — 55% complete</div>
     </div>
   </div>
 
@@ -341,28 +358,28 @@
 
     <div class="char-grid">
       <div class="char-card">
-        <div class="char-avatar fox-bg">🦊</div>
+        <img class="char-img" src="assets/concept_art/Fox-girl explorer character design.png" alt="Coco character design sheet">
         <div class="char-name">Coco</div>
         <div class="char-animal">Fox-girl · Protagonist</div>
         <span class="char-trait fox-trait">Curious explorer</span>
         <p class="char-desc">Sharp, clever and always asking why. Coco leads the way into the unknown.</p>
       </div>
       <div class="char-card">
-        <div class="char-avatar panda-bg">🐼</div>
+        <img class="char-img" src="assets/concept_art/Panda-girl character reference sheet.png" alt="Charlotte character design sheet">
         <div class="char-name">Charlotte</div>
         <div class="char-animal">Panda-girl</div>
         <span class="char-trait panda-trait">Loyal fighter</span>
         <p class="char-desc">Quiet and steady, but devastating in combat with her bo staff.</p>
       </div>
       <div class="char-card">
-        <div class="char-avatar wolf-bg">🐺</div>
+        <img class="char-img" src="assets/concept_art/Young wolf-boy character design sheet.png" alt="Milo character design sheet">
         <div class="char-name">Milo</div>
         <div class="char-animal">Wolf-boy</div>
         <span class="char-trait wolf-trait">Fierce & loyal</span>
         <p class="char-desc">Dark and fast, with sharp instincts and an unshakeable bond to his pack.</p>
       </div>
       <div class="char-card">
-        <div class="char-avatar bear-bg">🐻</div>
+        <img class="char-img" src="assets/concept_art/Bear-boy character design sheet.png" alt="Otto character design sheet">
         <div class="char-name">Otto</div>
         <div class="char-animal">Bear-boy</div>
         <span class="char-trait bear-trait">Gentle giant</span>
@@ -379,6 +396,7 @@
     <p class="section-desc">The island is divided into 8 key locations. Kids start at Sandy Cove and build their base at The Great Treehouse before venturing into the 6 mystery zones.</p>
 
     <div class="map-card">
+      <img class="map-img" src="assets/concept_art/Tropical island adventure map.png" alt="Wildborn island map">
       <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
         <span style="font-size: 12px; font-weight: 500; color: #3B6D11; background: #EAF3DE; padding: 3px 10px; border-radius: 12px;">Start</span>
         <span style="font-size: 12px; color: var(--color-text-secondary)">Sandy Cove → The Great Treehouse → 6 mystery zones</span>
@@ -432,7 +450,7 @@
         <div class="log-dot done">✓</div>
         <div class="log-content">
           <div class="log-title">Game name & concept</div>
-          <div class="log-sub">Explored names like Wildborn, Primal Isle and Wild Paws. Settled on Wild Paws for its kid-friendly energy.</div>
+          <div class="log-sub">Explored names like Wildborn, Primal Isle and Wildborn. Settled on Wildborn for its kid-friendly energy.</div>
         </div>
       </div>
       <div class="log-item">
@@ -471,6 +489,20 @@
         </div>
       </div>
       <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Concept art — all four characters</div>
+          <div class="log-sub">Character design sheets for Coco, Charlotte, Milo and Otto. Front, side and back views with face closeups. Anime style, consistent across the crew.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Island map illustrated</div>
+          <div class="log-sub">Parchment-style illustrated map showing all 8 locations. Hand-drawn feel with monster hints, compass and dotted paths between zones.</div>
+        </div>
+      </div>
+      <div class="log-item">
         <div class="log-dot">○</div>
         <div class="log-content">
           <div class="log-title">Walking cycle sprites</div>
@@ -495,7 +527,7 @@
   </div>
 
   <div class="footer">
-    <strong>Wild Paws</strong> · Game Design Dev Log · Built with Claude
+    <strong>Wildborn</strong> · Game Design Dev Log · Built with Claude
   </div>
 
 </div>
