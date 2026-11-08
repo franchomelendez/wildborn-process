@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wildborn — Game Design Dev Log</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Pirata+One&display=swap');
   /* Fallback theme for viewing the page on its own (e.g. GitHub Pages).
      :where() has zero specificity, so a parent site's theme tokens always win. */
   :where(:root) {
@@ -21,9 +21,25 @@
 
   .site { font-family: var(--font-sans); color: var(--color-text-primary); }
 
+  /* Island palette: night sea, parchment, ink, wax-seal red (plus brand green/amber) */
+  .site {
+    --wb-sea: #0E3433;
+    --wb-parchment: #EEDDB5;
+    --wb-parchment-edge: #D9BF86;
+    --wb-ink: #3A2A16;
+    --wb-ink-soft: #6A5332;
+    --wb-seal: #A3311F;
+    --wb-fell: 'IM Fell English', Georgia, 'Times New Roman', serif;
+    --wb-pirate: 'Pirata One', 'IM Fell English', Georgia, serif;
+  }
+
   .hero {
-    background: linear-gradient(135deg, #3B6D11 0%, #639922 50%, #BA7517 100%);
-    padding: 3rem 2rem 4rem;
+    background:
+      radial-gradient(ellipse at 50% 35%, rgba(14,52,51,0.72) 0%, rgba(14,52,51,0.94) 70%),
+      linear-gradient(180deg, rgba(14,52,51,0.4), rgba(59,109,17,0.55)),
+      url('assets/concept_art/Tropical island adventure map.png') center 40% / cover,
+      var(--wb-sea);
+    padding: 3.5rem 1.5rem 5.5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -31,34 +47,48 @@
   .hero::before {
     content: '';
     position: absolute;
-    bottom: -2px; left: 0; right: 0;
-    height: 48px;
+    bottom: -1px; left: 0; right: 0;
+    height: 44px;
     background: var(--color-background-primary);
-    clip-path: ellipse(55% 100% at 50% 100%);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44' preserveAspectRatio='none'%3E%3Cpath d='M0 22 C20 6 40 6 60 22 S100 38 120 22 V44 H0Z'/%3E%3C/svg%3E") 0 0 / 240px 100% repeat-x;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44' preserveAspectRatio='none'%3E%3Cpath d='M0 22 C20 6 40 6 60 22 S100 38 120 22 V44 H0Z'/%3E%3C/svg%3E") 0 0 / 240px 100% repeat-x;
   }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 10px; left: 0; right: 0;
+    height: 44px;
+    background: rgba(238,221,181,0.18);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44' preserveAspectRatio='none'%3E%3Cpath d='M0 22 C20 6 40 6 60 22 S100 38 120 22 V44 H0Z'/%3E%3C/svg%3E") 90px 0 / 240px 100% repeat-x;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44' preserveAspectRatio='none'%3E%3Cpath d='M0 22 C20 6 40 6 60 22 S100 38 120 22 V44 H0Z'/%3E%3C/svg%3E") 90px 0 / 240px 100% repeat-x;
+  }
+  .hero > * { position: relative; z-index: 1; }
   .hero-tag {
     display: inline-block;
-    background: rgba(255,255,255,0.2);
-    color: #fff;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 1rem;
-    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--wb-parchment);
+    font-family: var(--wb-fell);
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 0.25rem;
+    opacity: 0.85;
   }
   .hero h1 {
-    font-size: 48px;
-    font-weight: 500;
-    color: #fff;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    font-family: var(--wb-pirate);
+    font-size: clamp(64px, 14vw, 112px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--wb-parchment);
+    margin-bottom: 0.75rem;
+    text-shadow: 0 3px 0 rgba(58,42,22,0.55), 0 0 28px rgba(186,117,23,0.35);
   }
   .hero-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 1.5rem;
+    font-family: var(--wb-fell);
+    font-size: 19px;
+    line-height: 1.5;
+    color: rgba(238,221,181,0.92);
+    max-width: 30em;
+    margin: 0 auto 1.75rem;
+    text-wrap: balance;
   }
   .hero-badges {
     display: flex;
@@ -67,27 +97,30 @@
     flex-wrap: wrap;
   }
   .badge {
-    background: rgba(255,255,255,0.15);
-    color: #fff;
+    background: rgba(14,52,51,0.55);
+    color: var(--wb-parchment);
     font-size: 13px;
     padding: 5px 14px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+    border: 1px dashed rgba(238,221,181,0.5);
   }
 
   .section { padding: 2.5rem 1.5rem; max-width: 860px; margin: 0 auto; }
 
   .section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    color: #3B6D11;
-    text-transform: uppercase;
-    margin-bottom: 0.4rem;
+    font-family: var(--wb-fell);
+    font-style: italic;
+    font-size: 16px;
+    color: #BA7517;
+    margin-bottom: 0.1rem;
   }
+  .section-label::before { content: '✦ '; font-style: normal; }
   .section-title {
-    font-size: 22px;
-    font-weight: 500;
+    font-family: var(--wb-fell);
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 400;
+    text-wrap: balance;
     color: var(--color-text-primary);
     margin-bottom: 0.5rem;
   }
@@ -99,10 +132,11 @@
   }
 
   .divider {
-    height: 1px;
-    background: var(--color-border-tertiary);
-    max-width: 860px;
+    height: 0;
+    border-top: 2px dashed var(--color-border-secondary);
+    max-width: 812px;
     margin: 0 auto;
+    opacity: 0.6;
   }
 
   .concept-grid {
@@ -420,41 +454,96 @@
   }
   .callout strong { color: var(--color-text-primary); font-weight: 500; }
 
+  .scroll {
+    color: var(--wb-ink);
+    background:
+      radial-gradient(circle at 12% 18%, rgba(186,117,23,0.16), transparent 28%),
+      radial-gradient(circle at 88% 72%, rgba(122,84,30,0.14), transparent 32%),
+      radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(122,84,30,0.28) 100%),
+      var(--wb-parchment);
+    border-radius: 6px 10px 8px 12px / 12px 6px 10px 8px;
+    box-shadow: inset 0 0 0 1px var(--wb-parchment-edge), 0 10px 24px -14px rgba(58,42,22,0.55);
+    padding: 2rem clamp(1.25rem, 4vw, 2.5rem);
+    margin-bottom: 1.75rem;
+  }
   .story {
     list-style: none;
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.5rem;
   }
   .story li {
     position: relative;
-    padding: 0 0 1.25rem 28px;
-    border-left: 1px solid var(--color-border-tertiary);
-    margin-left: 6px;
+    padding: 0 0 1.5rem 34px;
+    margin-left: 8px;
+    border-left: 2px dashed rgba(58,42,22,0.4);
   }
   .story li:last-child { border-left-color: transparent; padding-bottom: 0; }
   .story li::before {
     content: '';
     position: absolute;
-    left: -6px;
-    top: 3px;
-    width: 11px;
-    height: 11px;
+    left: -7px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: var(--color-background-primary);
-    border: 2px solid #BA7517;
+    background: var(--wb-parchment);
+    border: 2px solid var(--wb-ink-soft);
   }
-  .story li.story-now::before { background: #3B6D11; border-color: #3B6D11; }
+  .story li.story-now::before {
+    content: '✕';
+    border: 0;
+    background: none;
+    width: auto;
+    height: auto;
+    left: -13px;
+    top: -6px;
+    font-family: var(--wb-pirate);
+    font-size: 30px;
+    line-height: 1;
+    color: var(--wb-seal);
+  }
   .story-era {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #BA7517;
+    font-family: var(--wb-fell);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--wb-ink-soft);
   }
-  .story-now .story-era { color: #3B6D11; }
-  .story-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 2px 0 4px; }
-  .story p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.65; max-width: 65ch; }
+  .story-now .story-era { color: var(--wb-seal); }
+  .story-title { font-family: var(--wb-fell); font-size: 21px; line-height: 1.25; color: var(--wb-ink); margin: 1px 0 4px; }
+  .story p { font-family: var(--wb-fell); font-size: 17px; color: var(--wb-ink); line-height: 1.6; max-width: 62ch; }
+
+  .sealed-note {
+    position: relative;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 1.25rem 4.5rem 1.25rem 1.5rem;
+    color: var(--wb-ink);
+    background: linear-gradient(135deg, var(--wb-parchment) 0%, #E5CF9C 100%);
+    border-radius: 3px;
+    box-shadow: 0 8px 18px -12px rgba(58,42,22,0.6);
+    transform: rotate(-1deg);
+    font-family: var(--wb-fell);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .sealed-note strong { font-weight: 400; font-style: italic; display: block; font-size: 19px; margin-bottom: 4px; }
+  .sealed-note::after {
+    content: '?';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    width: 44px;
+    height: 44px;
+    margin-top: -22px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #C4483A, var(--wb-seal) 60%, #7A2216);
+    box-shadow: 0 0 0 3px rgba(163,49,31,0.35), 0 3px 6px rgba(58,42,22,0.4);
+    color: #F3D9C8;
+    font-family: var(--wb-pirate);
+    font-size: 26px;
+    line-height: 44px;
+    text-align: center;
+  }
 
   .profiles { display: flex; flex-direction: column; gap: 14px; }
   .profiles .figure { margin: 0; }
@@ -477,7 +566,7 @@
   <div class="hero">
     <div class="hero-tag">Game Design Dev Log</div>
     <h1>Wildborn</h1>
-    <p class="hero-sub">A 2D adventure game about kids born with animal traits</p>
+    <p class="hero-sub">A syrup from a forgotten island. Five kids who were never meant to survive. A 2D adventure about finding out why they were born different.</p>
     <div class="hero-badges">
       <span class="badge">2D · Isometric test</span>
       <span class="badge">Exploration</span>
@@ -528,6 +617,7 @@
     <h2 class="section-title">Where the syrup came from</h2>
     <p class="section-desc">The full story, in the order it happened. The game starts at the last step; everything before it is the mystery the kids uncover.</p>
 
+    <div class="scroll">
     <ol class="story">
       <li>
         <div class="story-era">Long ago</div>
@@ -565,9 +655,10 @@
         <p>The crew arrives on the island. Somewhere in its zones are the tribe's story, the pirates' treasure and the truth about the syrup.</p>
       </li>
     </ol>
+    </div>
 
-    <div class="callout">
-      <strong>Still open.</strong> How did the escaped pirates bring the syrup back to civilization? Does anyone from the tribe survive on the island today? What does the doctor really want, and do the kids find the doctor again on the island?
+    <div class="sealed-note">
+      <strong>Still open</strong> How did the escaped pirates bring the syrup back to civilization? Does anyone from the tribe survive on the island today? What does the doctor really want, and do the kids find the doctor again on the island?
     </div>
   </div>
 
