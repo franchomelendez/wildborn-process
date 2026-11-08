@@ -3,29 +3,44 @@
 <title>Wildborn — Game Design Dev Log</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Pirata+One&display=swap');
-  /* Fallback theme for viewing the page on its own (e.g. GitHub Pages).
-     :where() has zero specificity, so a parent site's theme tokens always win. */
+  /* Fallback theme for viewing the page on its own (e.g. GitHub Pages):
+     sand in light mode, night sea in dark mode.
+     :where() has zero specificity, so a parent site's theme tokens always win.
+     --color-background-tertiary is the page itself; primary is cards. */
   :where(:root) {
     --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --color-text-primary: #1f2419;
-    --color-text-secondary: #5c6355;
-    --color-background-primary: #ffffff;
-    --color-background-secondary: #f3f4ef;
-    --color-border-tertiary: #e1e4da;
-    --color-border-secondary: #c5cabb;
+    --color-text-primary: #2E2414;
+    --color-text-secondary: #67573B;
+    --color-background-tertiary: #F2E8D2;
+    --color-background-primary: #FBF6EA;
+    --color-background-secondary: #EADDBF;
+    --color-border-tertiary: #DDCCA6;
+    --color-border-secondary: #C2AB7C;
     --border-radius-md: 8px;
     --border-radius-lg: 12px;
   }
+  @media (prefers-color-scheme: dark) {
+    :where(:root) {
+      --color-text-primary: #EDE3CC;
+      --color-text-secondary: #A8BDB3;
+      --color-background-tertiary: #0B2423;
+      --color-background-primary: #11302E;
+      --color-background-secondary: #173936;
+      --color-border-tertiary: #234845;
+      --color-border-secondary: #3A6460;
+      color-scheme: dark;
+    }
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: transparent; }
+  body { background: var(--color-background-tertiary, var(--color-background-primary)); }
 
   .site { font-family: var(--font-sans); color: var(--color-text-primary); }
 
   /* Island palette: night sea, parchment, ink, wax-seal red (plus brand green/amber) */
   .site {
     --wb-sea: #0E3433;
-    --wb-parchment: #EEDDB5;
-    --wb-parchment-edge: #D9BF86;
+    --wb-parchment: #EBD3A0;
+    --wb-parchment-edge: #C9A764;
     --wb-ink: #3A2A16;
     --wb-ink-soft: #6A5332;
     --wb-seal: #A3311F;
@@ -49,7 +64,7 @@
     position: absolute;
     bottom: -1px; left: 0; right: 0;
     height: 44px;
-    background: var(--color-background-primary);
+    background: var(--color-background-tertiary, var(--color-background-primary));
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44' preserveAspectRatio='none'%3E%3Cpath d='M0 22 C20 6 40 6 60 22 S100 38 120 22 V44 H0Z'/%3E%3C/svg%3E") 0 0 / 240px 100% repeat-x;
             mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 44' preserveAspectRatio='none'%3E%3Cpath d='M0 22 C20 6 40 6 60 22 S100 38 120 22 V44 H0Z'/%3E%3C/svg%3E") 0 0 / 240px 100% repeat-x;
   }
@@ -518,7 +533,7 @@
     margin: 0 auto;
     padding: 1.25rem 4.5rem 1.25rem 1.5rem;
     color: var(--wb-ink);
-    background: linear-gradient(135deg, var(--wb-parchment) 0%, #E5CF9C 100%);
+    background: linear-gradient(135deg, var(--wb-parchment) 0%, #DFC184 100%);
     border-radius: 3px;
     box-shadow: 0 8px 18px -12px rgba(58,42,22,0.6);
     transform: rotate(-1deg);
@@ -549,6 +564,20 @@
   .profiles .figure { margin: 0; }
   .figure-cap strong { color: var(--color-text-primary); font-weight: 500; }
   .figure-cap q { font-style: italic; }
+
+  @media (prefers-color-scheme: dark) {
+    .fox-trait { background: rgba(186,117,23,0.22); color: #F2C27C; }
+    .panda-trait { background: rgba(80,140,210,0.2); color: #A9CDF2; }
+    .wolf-trait { background: rgba(99,153,34,0.22); color: #B5D98C; }
+    .bear-trait { background: rgba(200,90,50,0.2); color: #F0A98C; }
+    .redpanda-trait { background: rgba(200,70,40,0.22); color: #F4A28A; }
+    .char-new { background: rgba(186,117,23,0.25); color: #F2C27C; }
+    .log-dot.done { background: rgba(99,153,34,0.22); border-color: #7DAE45; }
+    .steps li::before { background: rgba(99,153,34,0.22); color: #B5D98C; }
+    .stat-num { color: #B5D98C; }
+    .section-label { color: #DDA04A; }
+    .scroll, .sealed-note { box-shadow: inset 0 0 0 1px var(--wb-parchment-edge), 0 14px 30px -12px rgba(0,0,0,0.7); }
+  }
 
   .footer {
     background: var(--color-background-secondary);
