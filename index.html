@@ -1,6 +1,21 @@
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wildborn — Game Design Dev Log</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+  /* Fallback theme for viewing the page on its own (e.g. GitHub Pages).
+     :where() has zero specificity, so a parent site's theme tokens always win. */
+  :where(:root) {
+    --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --color-text-primary: #1f2419;
+    --color-text-secondary: #5c6355;
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f3f4ef;
+    --color-border-tertiary: #e1e4da;
+    --color-border-secondary: #c5cabb;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: transparent; }
 
@@ -92,7 +107,7 @@
 
   .concept-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 12px;
     margin-bottom: 1.5rem;
   }
