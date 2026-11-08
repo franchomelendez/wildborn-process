@@ -120,7 +120,7 @@
 
   .char-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
     gap: 14px;
   }
   .char-card {
@@ -244,7 +244,7 @@
     height: 100%;
     border-radius: 20px;
     background: linear-gradient(90deg, #3B6D11, #BA7517);
-    width: 55%;
+    width: 65%;
   }
   .progress-label {
     font-size: 12px;
@@ -289,6 +289,163 @@
   .log-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); }
   .log-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.5; }
 
+  .char-new {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #854F0B;
+    background: #FAEEDA;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .redpanda-trait { background: #FBE9E4; color: #A33A1C; }
+
+  .figure {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .figure img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    border-radius: var(--border-radius-md);
+    background: #f7f5f2;
+  }
+  .figure-cap {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .turn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+  .turn-grid figure {
+    margin: 0;
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+  }
+  .turn-grid img { width: 100%; display: block; background: #fff; }
+  .turn-grid figcaption {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    padding: 6px 10px;
+  }
+
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .steps li {
+    counter-increment: step;
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 12px 14px 12px 48px;
+    position: relative;
+  }
+  .steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #EAF3DE;
+    color: #3B6D11;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
+  .step-desc { font-size: 12px; color: var(--color-text-secondary); margin-top: 3px; line-height: 1.5; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .stat {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 10px 12px;
+  }
+  .stat-num { font-size: 20px; font-weight: 500; color: #3B6D11; }
+  .stat-label { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; line-height: 1.4; }
+
+  .callout {
+    border-left: 3px solid #BA7517;
+    background: var(--color-background-secondary);
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+  .callout strong { color: var(--color-text-primary); font-weight: 500; }
+
+  .story {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  .story li {
+    position: relative;
+    padding: 0 0 1.25rem 28px;
+    border-left: 1px solid var(--color-border-tertiary);
+    margin-left: 6px;
+  }
+  .story li:last-child { border-left-color: transparent; padding-bottom: 0; }
+  .story li::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 3px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--color-background-primary);
+    border: 2px solid #BA7517;
+  }
+  .story li.story-now::before { background: #3B6D11; border-color: #3B6D11; }
+  .story-era {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #BA7517;
+  }
+  .story-now .story-era { color: #3B6D11; }
+  .story-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 2px 0 4px; }
+  .story p { font-size: 14px; color: var(--color-text-secondary); line-height: 1.65; max-width: 65ch; }
+
+  .profiles { display: flex; flex-direction: column; gap: 14px; }
+  .profiles .figure { margin: 0; }
+  .figure-cap strong { color: var(--color-text-primary); font-weight: 500; }
+  .figure-cap q { font-style: italic; }
+
   .footer {
     background: var(--color-background-secondary);
     border-top: 0.5px solid var(--color-border-tertiary);
@@ -307,7 +464,7 @@
     <h1>Wildborn</h1>
     <p class="hero-sub">A 2D adventure game about kids born with animal traits</p>
     <div class="hero-badges">
-      <span class="badge">2D Side-scroll</span>
+      <span class="badge">2D · Isometric test</span>
       <span class="badge">Exploration</span>
       <span class="badge">Anime style</span>
       <span class="badge">Ages 8–12</span>
@@ -317,7 +474,7 @@
   <div class="section">
     <div class="section-label">Game concept</div>
     <h2 class="section-title">The story so far</h2>
-    <p class="section-desc">Four kids born with mysterious animal traits find themselves on a tropical island that holds the secret of their origins. They must explore dangerous zones, battle monsters, and uncover the truth about why they were born different.</p>
+    <p class="section-desc">Five kids, saved before birth by a strange doctor's syrup, grow up half human and half animal. Their search for the truth leads them to a tropical island, where they must explore dangerous zones, battle monsters, and find out why they were born different.</p>
 
     <div class="concept-grid">
       <div class="concept-card">
@@ -337,15 +494,65 @@
       </div>
       <div class="concept-card">
         <div class="concept-icon">🎮</div>
-        <h3>2D scroll</h3>
-        <p>Side-scrolling platformer with exploration and combat inspired by classic adventures.</p>
+        <h3>Camera: still open</h3>
+        <p>Started as a side-scroller. Now testing an isometric view, with characters that walk in 8 directions.</p>
       </div>
     </div>
 
     <div style="margin-top: 0.5rem;">
       <div style="font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 6px;">Overall progress</div>
       <div class="progress-bar-wrap"><div class="progress-bar"></div></div>
-      <div class="progress-label">Design phase — 55% complete</div>
+      <div class="progress-label">Design phase — 65% complete</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Story</div>
+    <h2 class="section-title">Where the syrup came from</h2>
+    <p class="section-desc">The full story, in the order it happened. The game starts at the last step; everything before it is the mystery the kids uncover.</p>
+
+    <ol class="story">
+      <li>
+        <div class="story-era">Long ago</div>
+        <div class="story-title">Pirates on a hidden island</div>
+        <p>Pirates land on a remote island to hide their treasure. They don't know a tribe already lives there, a people who never had contact with the outside world. The natives fight back, but the pirates' weapons are far stronger.</p>
+      </li>
+      <li>
+        <div class="story-era">Long ago</div>
+        <div class="story-title">The syrup</div>
+        <p>Facing the end of their people, the tribe creates a syrup that gives them the strength of animals. The battle is brutal. Most of the pirates and most of the natives die. A few pirates escape, and they take some of the syrup with them.</p>
+      </li>
+      <li>
+        <div class="story-era">Many years later</div>
+        <div class="story-title">A curiosity in a museum</div>
+        <p>The syrup ends up forgotten, maybe in a museum collection. A doctor researching the legend of the animal-men and the pirates finds it.</p>
+      </li>
+      <li>
+        <div class="story-era">Before the kids are born</div>
+        <div class="story-title">The doctor's offer</div>
+        <p>A few families are told their unborn babies are too ill to survive birth. The strange doctor offers a radical cure: the syrup. The babies will live and grow stronger, but as hybrids, with human minds in partly animal bodies. The parents say yes.</p>
+      </li>
+      <li>
+        <div class="story-era">Childhood</div>
+        <div class="story-title">The hidden school</div>
+        <p>The doctor offers to keep the children away from the world, at a small private school far from civilization. They grow up together as friends and rarely question how they look.</p>
+      </li>
+      <li>
+        <div class="story-era">Growing up</div>
+        <div class="story-title">Coco finds a photo</div>
+        <p>Older now, the kids want answers. Coco finds a picture of the doctor and starts to investigate. Together they track the doctor down, and the trail points to an island where the mystery of their condition can be solved.</p>
+      </li>
+      <li class="story-now">
+        <div class="story-era">The game begins</div>
+        <div class="story-title">Landing at Sandy Cove</div>
+        <p>The crew arrives on the island. Somewhere in its zones are the tribe's story, the pirates' treasure and the truth about the syrup.</p>
+      </li>
+    </ol>
+
+    <div class="callout">
+      <strong>Still open.</strong> How did the escaped pirates bring the syrup back to civilization? Does anyone from the tribe survive on the island today? What does the doctor really want, and do the kids find the doctor again on the island?
     </div>
   </div>
 
@@ -354,7 +561,7 @@
   <div class="section">
     <div class="section-label">Characters</div>
     <h2 class="section-title">Meet the crew</h2>
-    <p class="section-desc">Four animal-kids, one island. Each character has a unique personality, fighting style and zone to explore.</p>
+    <p class="section-desc">Five animal-kids, one island. Each character has a unique personality, fighting style and zone to explore.</p>
 
     <div class="char-grid">
       <div class="char-card">
@@ -385,6 +592,85 @@
         <span class="char-trait bear-trait">Gentle giant</span>
         <p class="char-desc">Big heart, big strength. Otto is everyone's favourite — and nobody's pushover.</p>
       </div>
+      <div class="char-card">
+        <img class="char-img" src="assets/concept_art/red-panda-front.webp" alt="Juno, front view">
+        <div class="char-name">Juno <span class="char-new">New</span></div>
+        <div class="char-animal">Red panda-girl</div>
+        <span class="char-trait redpanda-trait">Inventor</span>
+        <p class="char-desc">Builds contraptions to fix what no one else will, with a sarcastic comment on the side.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Character profiles</div>
+    <h2 class="section-title">The girls, up close</h2>
+    <p class="section-desc">Profile sheets go further than the first design sheets: personality traits, likes and dislikes, expressions, and a line in each character's own voice.</p>
+
+    <div class="profiles">
+      <figure class="figure profile">
+        <img src="assets/profiles/coco-profile.webp" alt="Coco profile sheet: traits, front, side and back views, close-up, expressions and explorer notes">
+        <figcaption class="figure-cap"><strong>Coco</strong> · curious, intelligent, brave, kind, justice-driven. <q>The world is full of mysteries… and injustices. I'll explore both and set things right.</q></figcaption>
+      </figure>
+      <figure class="figure profile">
+        <img src="assets/profiles/charlotte-profile.webp" alt="Charlotte profile sheet: traits, front, side and back views, close-up, expressions and personality poses">
+        <figcaption class="figure-cap"><strong>Charlotte</strong> · loyal, kind, strong, supportive, fiercely protective. <q>My friends are my family. Hurt them, and you'll regret meeting me.</q></figcaption>
+      </figure>
+      <figure class="figure profile">
+        <img src="assets/profiles/juno-profile.webp" alt="Juno profile sheet: traits, likes and dislikes, front, side and back views, close-up, expressions and invention notes">
+        <figcaption class="figure-cap"><strong>Juno</strong> · intelligent, inventive, sarcastic, loyal, justice-driven. Likes tinkering, strong coffee and bad puns; dislikes bureaucracy and overcomplicated plans. <q>If it's stupid but it works, it ain't stupid.</q></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Art pipeline</div>
+    <h2 class="section-title">From turnaround sheet to walking sprite</h2>
+    <p class="section-desc">To try an isometric view, each character needed to walk in 8 directions. Instead of drawing every frame, we built a small local pipeline: one turnaround sheet in, a game-ready sprite sheet out. Everything runs on a home PC with an RTX 3060.</p>
+
+    <div class="figure">
+      <img src="assets/sprites/crew_walk.gif" alt="All five characters walking towards the camera at an angle">
+      <div class="figure-cap">The whole crew walking south-west. Every frame was made by the pipeline; none were drawn by hand.</div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">characters with a walk cycle</div></div>
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label">directions each (3 are mirrored)</div></div>
+      <div class="stat"><div class="stat-num">25</div><div class="stat-label">frames per loop, played at 25 fps</div></div>
+      <div class="stat"><div class="stat-num">~75 s</div><div class="stat-label">to make one clip on the GPU</div></div>
+    </div>
+
+    <h3 class="step-title" style="font-size: 15px; margin-bottom: 10px;">1 · The turnaround sheets</h3>
+    <p class="section-desc" style="margin-bottom: 1rem;">Each character got a new sheet with 5 views from a high isometric camera: south, south-west, west, north-west and north. The east side comes for free by flipping.</p>
+    <div class="turn-grid">
+      <figure><img src="assets/turnarounds/coco-turnaround.webp" alt="Coco isometric turnaround"><figcaption>Coco</figcaption></figure>
+      <figure><img src="assets/turnarounds/charlotte-turnaround.webp" alt="Charlotte isometric turnaround"><figcaption>Charlotte</figcaption></figure>
+      <figure><img src="assets/turnarounds/milo-turnaround.webp" alt="Milo isometric turnaround"><figcaption>Milo</figcaption></figure>
+      <figure><img src="assets/turnarounds/otto-turnaround.webp" alt="Otto isometric turnaround"><figcaption>Otto</figcaption></figure>
+      <figure><img src="assets/turnarounds/red-panda-turnaround.webp" alt="Juno isometric turnaround"><figcaption>Juno</figcaption></figure>
+    </div>
+
+    <h3 class="step-title" style="font-size: 15px; margin-bottom: 10px;">2 · From still to animation</h3>
+    <ol class="steps">
+      <li><div class="step-title">Slice</div><div class="step-desc">Cut the sheet into single views, lined up on the feet so every character stands on the same ground.</div></li>
+      <li><div class="step-title">Animate</div><div class="step-desc">An open video model (Wan 2.2) turns each still into a short walking clip. We make 4 takes per direction.</div></li>
+      <li><div class="step-title">Cut out</div><div class="step-desc">An AI matting model removes the background, so the character can be placed on any scene.</div></li>
+      <li><div class="step-title">Find the loop</div><div class="step-desc">The pipeline looks for the stretch where the last step flows back into the first, so the walk repeats smoothly.</div></li>
+      <li><div class="step-title">Pick the best take</div><div class="step-desc">A preview page shows all takes side by side. A human picks the one that looks right.</div></li>
+      <li><div class="step-title">Pack for the game</div><div class="step-desc">The picks become one sprite sheet plus animation data that the game engine (Phaser) loads directly.</div></li>
+    </ol>
+
+    <div class="figure">
+      <img src="assets/sprites/coco_8dir.gif" alt="Coco walking in all 8 directions">
+      <div class="figure-cap">Coco in all 8 directions. Each character's height is set relative to Coco, so Otto stands tallest.</div>
+    </div>
+
+    <div class="callout">
+      <strong>What we learned.</strong> Tails and ears need extra care, so the prompt for each character describes how its tail should swing and its ears should bob. Some sheets needed fixes too. Charlotte's front view was drawn slightly turned, so she got a separate straight-on drawing.
     </div>
   </div>
 
@@ -503,10 +789,73 @@
         </div>
       </div>
       <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Story outline</div>
+          <div class="log-sub">The backstory is set: a tribe, pirates, a syrup that gives animal strength, and the doctor who used it to save five babies.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">First prototype in Phaser</div>
+          <div class="log-sub">A tiny playable test: a main menu and Sandy Cove as a side-scrolling level, with placeholder shapes for Coco.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Profile sheets and a new crew member</div>
+          <div class="log-sub">Richer profile sheets for Coco and Charlotte, with traits, expressions and a signature line. Juno, an inventor red panda girl, joined the crew.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Isometric walk test</div>
+          <div class="log-sub">Made early isometric walk sheets of Coco with online tools. They looked promising, and opened the question of switching the camera.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Isometric turnaround sheets</div>
+          <div class="log-sub">New 5-view sheets for every character, Juno included, from a high isometric camera.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Local sprite pipeline</div>
+          <div class="log-sub">Built our own tool to turn a turnaround sheet into walk animations, using an open video model on a home GPU. No online services needed.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot done">✓</div>
+        <div class="log-content">
+          <div class="log-title">Walking cycle sprites — all five</div>
+          <div class="log-sub">Coco, Charlotte, Milo, Otto and Juno all walk in 8 directions, packed and ready for Phaser.</div>
+        </div>
+      </div>
+      <div class="log-item">
         <div class="log-dot">○</div>
         <div class="log-content">
-          <div class="log-title">Walking cycle sprites</div>
-          <div class="log-sub">Next up — generate sprite walking cycles for all four characters.</div>
+          <div class="log-title">Running cycle sprites</div>
+          <div class="log-sub">Next up — the same pipeline, now for running.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot">○</div>
+        <div class="log-content">
+          <div class="log-title">Pick the camera</div>
+          <div class="log-sub">Pending — try the new sprites in an isometric scene and decide between side-scroll, isometric, or a mix.</div>
+        </div>
+      </div>
+      <div class="log-item">
+        <div class="log-dot">○</div>
+        <div class="log-content">
+          <div class="log-title">Juno's place in the story</div>
+          <div class="log-sub">Pending — give Juno a role in the team and a zone on the island.</div>
         </div>
       </div>
       <div class="log-item">
@@ -519,8 +868,8 @@
       <div class="log-item">
         <div class="log-dot">○</div>
         <div class="log-content">
-          <div class="log-title">Story & level design</div>
-          <div class="log-sub">Pending — flesh out the story intro, zone narratives and clue system.</div>
+          <div class="log-title">Zone stories & clue system</div>
+          <div class="log-sub">Pending — decide which piece of the story each zone reveals, and how the clues lead from one zone to the next.</div>
         </div>
       </div>
     </div>
